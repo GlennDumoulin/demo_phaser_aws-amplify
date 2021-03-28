@@ -1,0 +1,25 @@
+type Achievement @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  description: String!
+  value: Int!
+  achieved_by: [UserdataAchievement] @connection(keyName: "byAchievement", fields: ["id"])
+  target: String!
+}
+
+type Userdata @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String!
+  highscore: Int!
+  games_played: Int!
+  achievements: [UserdataAchievement] @connection(keyName: "byUserdata", fields: ["id"])
+  stars_collected: Int!
+}
+
+type UserdataAchievement @model(queries: null) @key(name: "byUserdata", fields: ["userdataID", "achievementID"]) @key(name: "byAchievement", fields: ["achievementID", "userdataID"]) @auth(rules: [{allow: public}, {allow: public}]) {
+  id: ID!
+  userdataID: ID!
+  achievementID: ID!
+  userdata: Userdata! @connection(fields: ["userdataID"])
+  achievement: Achievement! @connection(fields: ["achievementID"])
+}

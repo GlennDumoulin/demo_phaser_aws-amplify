@@ -1,0 +1,225 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #393939;
+    overflow: hidden;
+}
+
+.hidden {
+    z-index: -1 !important;
+}
+
+.closed {
+    display: none !important;
+}
+
+.register {
+    background-color: #393939;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.register form {
+    background-color: tomato;
+    padding: 30px;
+    border-radius: 20px 0 20px 0;
+}
+
+.register form input {
+    background-color: #dedede;
+    color: black;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin: 5px 0 20px;
+}
+
+input#register-btn {
+    background-color: #ceafaf;
+    color: #393939;
+    transition: all 0.3s ease-in-out;
+}
+
+input#register-btn:hover {
+    cursor: pointer;
+    background-color: #393939;
+    color: #ceafaf;
+}
+
+#game-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.game-container .game-over-container {
+    z-index: 999;
+    width: calc(100vw / 1.25);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(57, 57, 57, 0.6);
+}
+
+.game-over-container .game-over-content {
+    text-align: center;
+    background-color: tomato;
+    padding: 30px;
+    border-radius: 20px 0 20px 0;
+}
+
+.game-over-content h1 {
+    margin-top: 0;
+}
+
+.game-over-content #play-again-btn {
+    display: block;
+    background-color: #ceafaf;
+    color: #393939;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-over-content #play-again-btn:hover {
+    cursor: pointer;
+    background-color: #393939;
+    color: #ceafaf;
+}
+
+.game-container .game-info-container {
+    width: calc(100vw - (100vw / 1.25));
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+.game-info-item .game-info-label {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #ceafaf;
+    padding: 30px 0;
+    border-bottom: 1px solid #393939;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-info-item .game-info-label:hover {
+    cursor: pointer;
+    background-color: tomato;
+}
+
+.game-info-label.active {
+    background-color: tomato;
+}
+
+.game-info-item .game-info-content {
+    background-color: #ceafaf;
+    border-bottom: 2px solid #393939;
+    padding: 20px;
+}
+
+.game-info-content div {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #393939;
+}
+
+.game-info-content div h1 {
+    font-size: 24px;
+}
+
+.game-info-content div a {
+    display: block;
+    color: #393939;
+    width: fit-content;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-info-content div a:hover {
+    color: tomato;
+}
+
+.game-info-content div a.download-btn,
+.game-info-content div a.github-link {
+    display: block;
+    text-align: center;
+    background-color: #393939;
+    color: #ceafaf;
+    border-radius: 50px;
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-info-content div a.download-btn:hover,
+.game-info-content div a.github-link:hover {
+    cursor: pointer;
+    background-color: tomato;
+    color: #393939;
+}
+
+.game-info-content#leaderboard-content .leaderboard-content-item {
+    border: none;
+    padding-bottom: 0;
+}
+
+.game-info-content#leaderboard-content .leaderboard-content-item h1 {
+    border: 2px solid #393939;
+    border-left-width: 10px;
+    padding: 7px 10px;
+}
+
+.game-info-content#leaderboard-content
+    .leaderboard-content-item:first-of-type
+    h1 {
+    border-color: #af9500;
+}
+
+.game-info-content#leaderboard-content
+    .leaderboard-content-item:nth-of-type(2)
+    h1 {
+    border-color: #d7d7d7;
+}
+
+.game-info-content#leaderboard-content
+    .leaderboard-content-item:nth-of-type(3)
+    h1 {
+    border-color: #6a3805;
+}
+
+.game-info-content#achievements-content .achievements-content-item {
+    border: 5px solid #393939;
+    border-radius: 20px;
+    padding: 7px 10px;
+}
+
+.game-info-content#achievements-content .achievements-content-item.achieved {
+    border-color: #008080;
+}
+
+.game-info-content#achievements-content .achievements-content-item h1 {
+    font-size: 20px;
+}
+
+.game-info-content#achievements-content .achievements-content-item.achieved h1 {
+    color: #008080;
+}
