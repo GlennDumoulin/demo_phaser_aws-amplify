@@ -167,15 +167,20 @@ const Game = () => {
 
         //  The score
         scoreText = this.add.text(20, 20, "score: 0", {
-            fontSize: "40px",
+            fontSize: width > 1400 ? "80px" : "40px",
             fill: "#000",
         });
 
         //  The highscore of current user
-        highscoreText = this.add.text(20, 60, `highscore: ${highscore}`, {
-            fontSize: "24px",
-            fill: "#000",
-        });
+        highscoreText = this.add.text(
+            20,
+            width > 1400 ? 100 : 60,
+            `highscore: ${highscore}`,
+            {
+                fontSize: width > 1400 ? "48px" : "24px",
+                fill: "#000",
+            }
+        );
 
         //  Collide the player and the stars with the platforms
         this.physics.add.collider(player, platforms);

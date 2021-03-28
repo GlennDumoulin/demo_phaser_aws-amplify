@@ -191,8 +191,8 @@ export default class GameInfo extends React.Component {
                             <div>
                                 <h1>Phaser</h1>
                                 <a
-                                    href="./src/assets/Phaser_DumoulinGlenn.pdf"
-                                    download
+                                    href="https://github.com/glendumo/demo_phaser_aws-amplify/blob/master/src/assets/Phaser_DumoulinGlenn.pdf"
+                                    target="_blank"
                                     className="download-btn"
                                 >
                                     Download my research
@@ -207,8 +207,8 @@ export default class GameInfo extends React.Component {
                             <div>
                                 <h1>AWS Amplify</h1>
                                 <a
-                                    href="./src/assets/AWS-Amplify_DumoulinGlenn.pdf"
-                                    download
+                                    href="https://github.com/glendumo/demo_phaser_aws-amplify/blob/master/src/assets/AWS-Amplify_DumoulinGlenn.pdf"
+                                    target="_blank"
                                     className="download-btn"
                                 >
                                     Download my research
@@ -223,8 +223,8 @@ export default class GameInfo extends React.Component {
                             <div>
                                 <h1>TypeScript for APIS</h1>
                                 <a
-                                    href="./src/assets/TypeScript-For-APIS_DumoulinGlenn.pdf"
-                                    download
+                                    href="https://github.com/glendumo/demo_phaser_aws-amplify/blob/master/src/assets/TypeScript-For-APIS_DumoulinGlenn.pdf"
+                                    target="_blank"
                                     className="download-btn"
                                 >
                                     Download my research
