@@ -1,3 +1,5 @@
+import "./style.css";
+
 import Phaser from "phaser";
 import React from "react";
 import ReactDOM from "react-dom";
