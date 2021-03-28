@@ -29,7 +29,7 @@ const Game = () => {
         physics: {
             default: "arcade",
             arcade: {
-                gravity: { y: 550 },
+                gravity: { y: height / 1.3 },
                 debug: false,
             },
         },
@@ -70,7 +70,9 @@ const Game = () => {
 
     function create() {
         //  A simple background for our game
-        this.add.image(width / 2, height / 2, "sky").setScale(2);
+        this.add
+            .image(width / 2, height / 2, "sky")
+            .setScale(width > 1400 ? 3 : 2);
 
         //  The platforms group contains the ground and the 2 ledges we can jump on
         platforms = this.physics.add.staticGroup();
@@ -78,21 +80,40 @@ const Game = () => {
         //  Here we create the ground.
         //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
         platforms
-            .create(width / 2, height - 30, "ground")
-            .setScale(3.2)
+            .create(
+                width / 2,
+                width > 1400 ? height - 10 : height - 30,
+                "ground"
+            )
+            .setScale(width > 1400 ? 5.5 : 3.2)
             .refreshBody();
 
         //  Now let's create some ledges
-        platforms.create(width / 1.1, height / 1.5, "ground");
-        platforms.create(50, height / 1.65, "ground");
-        platforms.create(-50, 250, "ground");
-        platforms.create(width / 1.8, height / 2.5, "ground");
-        platforms.create(width * 1.1, height / 3.25, "ground");
+        platforms
+            .create(width / 1.1, height / 1.5, "ground")
+            .setScale(width > 1400 ? 2 : 1)
+            .refreshBody();
+        platforms
+            .create(50, height / 1.65, "ground")
+            .setScale(width > 1400 ? 2 : 1)
+            .refreshBody();
+        platforms
+            .create(-50, 250, "ground")
+            .setScale(width > 1400 ? 2 : 1)
+            .refreshBody();
+        platforms
+            .create(width / 1.8, height / 2.5, "ground")
+            .setScale(width > 1400 ? 2 : 1)
+            .refreshBody();
+        platforms
+            .create(width * 1.1, height / 3.25, "ground")
+            .setScale(width > 1400 ? 2 : 1)
+            .refreshBody();
 
         // The player and its settings
         player = this.physics.add
             .sprite(100, 500, "dude")
-            .setScale(1.25)
+            .setScale(width > 1400 ? 2 : 1.25)
             .refreshBody();
 
         //  Player physics properties. Give the little guy a slight bounce.
@@ -133,12 +154,12 @@ const Game = () => {
         stars = this.physics.add.group({
             key: "star",
             repeat: 14,
-            setXY: { x: 50, y: 0, stepX: 80 },
+            setXY: { x: 50, y: 0, stepX: width / 15 },
         });
 
         stars.children.iterate(function (child) {
             //  Give each star a slightly different bounce
-            child.setScale(1.25).refreshBody();
+            child.setScale(width > 1400 ? 2 : 1.25).refreshBody();
             child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.5));
         });
 
@@ -173,11 +194,11 @@ const Game = () => {
         }
 
         if (cursors.left.isDown) {
-            player.setVelocityX(-250);
+            player.setVelocityX(width / -5);
 
             player.anims.play("left", true);
         } else if (cursors.right.isDown) {
-            player.setVelocityX(250);
+            player.setVelocityX(width / 5);
 
             player.anims.play("right", true);
         } else {
@@ -187,11 +208,11 @@ const Game = () => {
         }
 
         if (cursors.up.isDown && player.body.touching.down) {
-            player.setVelocityY(-500);
+            player.setVelocityY(height / -1.4);
         }
 
         if (cursors.down.isDown && !player.body.touching.down) {
-            player.setVelocityY(600);
+            player.setVelocityY(height / 1.25);
         }
     }
 
