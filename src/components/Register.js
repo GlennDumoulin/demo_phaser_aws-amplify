@@ -1,6 +1,7 @@
 import React from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Achievement, Userdata } from "../models";
+import defaultData from "../data/defaultData";
 import regeneratorRuntime from "regenerator-runtime";
 
 export default class Register extends React.Component {
@@ -19,8 +20,6 @@ export default class Register extends React.Component {
         this.setState({ allAchievements: await DataStore.query(Achievement) });
 
         this.setState({ allUserdata: await DataStore.query(Userdata) });
-
-        this.getDefaultData();
     }
 
     async componentDidUpdate() {
@@ -29,26 +28,11 @@ export default class Register extends React.Component {
         this.state.allUserdata = await DataStore.query(Userdata);
     }
 
-    async getDefaultData() {
-        this.state.defaultData = await fetch("./src/data/defaultData.json", {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-        })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (myJson) {
-                return myJson.defaultData;
-            });
-    }
-
     async addDefaultData() {
         const allAchievements = await DataStore.query(Achievement);
         const allUserdata = await DataStore.query(Userdata);
 
-        this.state.defaultData.achievements.forEach(async (achievement) => {
+        defaultData.achievements.forEach(async (achievement) => {
             const achievementAlreadyExists = allAchievements.find(
                 (existingAchievement) => {
                     return existingAchievement.title === achievement.title;
@@ -68,7 +52,7 @@ export default class Register extends React.Component {
             }
         });
 
-        this.state.defaultData.userdata.forEach(async (user) => {
+        defaultData.userdata.forEach(async (user) => {
             const userAlreadyExists = allUserdata.find((existingUser) => {
                 return existingUser.username === user.username;
             });

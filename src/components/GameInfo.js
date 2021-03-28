@@ -233,7 +233,7 @@ export default class GameInfo extends React.Component {
                             <div>
                                 <h1>My GitHub repo</h1>
                                 <a
-                                    href="https://www.github.com/"
+                                    href="https://github.com/glendumo/demo_phaser_aws-amplify"
                                     target="_blank"
                                     className="github-link"
                                 >
